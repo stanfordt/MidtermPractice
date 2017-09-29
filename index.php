@@ -4,7 +4,7 @@
     // Get orders
     $customerID = 1;
 
-    $query = "SELECT orderID, orderDate FROM orders WHERE $customerID = ?";
+    $query = "SELECT orderID, orderDate FROM orders WHERE customerID = ?";
 
     
     $stmt = $db->prepare($query);

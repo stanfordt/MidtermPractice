@@ -1,42 +1,44 @@
 <?php
     require_once('database.php');
 
-    // Get orders
-    $customerID = 1;
+    // Prepared variable
+    $state = 'CA';
 
-    $query = "SELECT orderID, orderDate FROM orders WHERE customerID = ?";
+    $query = "SELECT firstName, lastName, city FROM customers WHERE state = ?";
 
     
     $stmt = $db->prepare($query);
-    $stmt->bind_param('i', $customerID);
+    $stmt->bind_param('s', $state);
     $stmt->execute();
     $stmt->store_result();
     
-    $stmt->bind_result($orderID, $orderDate);
+    $stmt->bind_result($firstName, $lastName, $city);
 ?> 
 <!-- header information comes from include file -->
     <p><?php include 'header.php'; ?></p>
 
     <div id="header">
-        <h1>Orders</h1>
+        <h1>Customers</h1>
     </div>
 
     <div id="main">
 
-        <h1>Order List</h1>
+        <h1>Customer List</h1>
 
         <div id="content">
             <!-- display a list of customers -->
          
             <table>
                 <tr>
-                    <th>Order ID</th>
-                    <th>Order Date</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>City</th>
                 </tr>
                 <?php while ($stmt->fetch()) { ?>
                 <tr>
-                    <td><?php echo $orderID; ?></td>
-                    <td><?php echo $orderDate; ?></td>
+                    <td><?php echo $firstName; ?></td>
+                    <td><?php echo $lastName; ?></td>
+                    <td><?php echo $city; ?></td>
                 </tr>
                 <!-- result set is available -->
 

@@ -4,7 +4,7 @@
     // Prepared variable to select customers in California
     $state = 'CA';
 
-    $query = "SELECT firstName, lastName, city FROM customers WHERE state = ?";
+    $query = "SELECT firstName, lastName, city FROM customers WHERE state = ? ORDER BY lastName";
 
     
     $stmt = $db->prepare($query);

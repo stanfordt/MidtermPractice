@@ -1,5 +1,6 @@
 <?php
     $servername = 'localhost';
+    // Updated user to ts_user, generic account
     $username = 'ts_user';
     $password = 'pa55word';
     $dbname = 'tech_support';

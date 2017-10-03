@@ -1,7 +1,7 @@
 <?php
     require_once('database.php');
 
-    // Prepared variable
+    // Prepared variable to select customers in California
     $state = 'CA';
 
     $query = "SELECT firstName, lastName, city FROM customers WHERE state = ?";
@@ -11,7 +11,7 @@
     $stmt->bind_param('s', $state);
     $stmt->execute();
     $stmt->store_result();
-    
+    // Three variables we will bind the results to
     $stmt->bind_result($firstName, $lastName, $city);
 ?> 
 <!-- header information comes from include file -->
@@ -36,6 +36,7 @@
                 </tr>
                 <?php while ($stmt->fetch()) { ?>
                 <tr>
+                    <!-- echo all results to table rows -->
                     <td><?php echo $firstName; ?></td>
                     <td><?php echo $lastName; ?></td>
                     <td><?php echo $city; ?></td>
